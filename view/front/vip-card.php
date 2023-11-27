@@ -20,20 +20,18 @@ function wp_vip_layout()
                 <?php if ($items) : ?>
                     <?php foreach ($items as $item) : ?>
                         <div class="col-lg-4 col-md-4">
-                            <div class="packages_wrapping bg-white">
+                            <div class="packages_wrapping <?php echo $item->recommended == 1 ? 'recommended' : 'bg-white' ?>">
                                 <div class="packages_headers">
                                     <i class="lni-layers"></i>
-                                    <h4 class="packages_pr_title">پکیج پایه</h4>
-                                    <span class="packages_price-subtitle">با پکیج پایه شروع کنید!</span>
+                                    <h4 class="packages_pr_title">پکیج <?php echo Helper::accountType($item->type) ?></h4>
+                                    <span class="packages_price-subtitle">با پکیج <?php echo Helper::accountType($item->type) ?> شروع کنید!</span>
                                 </div>
                                 <div class="packages_price">
-                                    <h4 class="pr-value"><?php echo $item->price ?></h4>
+                                    <h4 class="pr-value"><?php echo Helper::dropZero($item->price) ?></h4>
                                 </div>
                                 <div class="packages_middlebody">
                                     <ul>
-                                        <li>یکماه دسترسی به مطالب VIP</li>
-                                        <li>ارتباط مستقیم با واتساپ استاد</li>
-                                        <li>الویت نمایش و بازدید بالا</li>
+                                        <li><?php echo Helper::benefits($item->benefits) ?></li>
                                     </ul>
                                 </div>
                                 <div class="packages_bottombody">
