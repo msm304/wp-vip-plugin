@@ -26,13 +26,13 @@ class Core
     }
     private function init()
     {
+        include_once VIP_PLUGIN_DIR . 'class/AutoLoad.php';
         register_activation_hook(__FILE__, [$this, 'wp_vip_activation']);
         register_deactivation_hook(__FILE__, [$this, 'wp_vip_deactivation']);
         add_action('wp_enqueue_scripts', [$this, 'wp_vip_register_assets']);
         add_action('admin_enqueue_scripts', [$this, 'wp_vip_register_assets_admin']);
 
         // Include
-        include_once VIP_PLUGIN_DIR . 'class/Helper.php';
         include_once VIP_PLUGIN_DIR . 'view/front/vip-card.php';
     }
     public function wp_vip_register_assets()
