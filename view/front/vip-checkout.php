@@ -1,6 +1,9 @@
 <?php
 function vip_checkout()
-{ ?>
+{
+    $result = Payment::gateway();
+    var_dump($result);
+?>
     <div class="checkout-wrapper">
         <p class="checkout-title">پرداخت جهت اکانت vip - پلن برنزی</p>
         <div class="order-details">
@@ -12,7 +15,7 @@ function vip_checkout()
             <span class="price">۱۴۹۰۰۰ <span>تومان</span></span>
         </div>
         <div class="pay">
-            <form action="" method="post">
+            <form action="<?php echo htmlspecialchars(get_the_permalink()) ?>" method="post">
                 <input type="submit" name="pay" value="پرداخت">
             </form>
         </div>
