@@ -34,6 +34,7 @@ class Core
 
         // Include
         include_once VIP_PLUGIN_DIR . 'view/front/vip-card.php';
+        include_once VIP_PLUGIN_DIR . 'view/front/vip-checkout.php';
     }
     public function wp_vip_register_assets()
     {
