@@ -31,8 +31,10 @@ class Core
         register_deactivation_hook(__FILE__, [$this, 'wp_vip_deactivation']);
         add_action('wp_enqueue_scripts', [$this, 'wp_vip_register_assets']);
         add_action('admin_enqueue_scripts', [$this, 'wp_vip_register_assets_admin']);
+        add_filter('template_redirect', [$this, 'ob_start']);
 
         // Include
+        include_once VIP_PLUGIN_DIR . '_lib/jdf.php';
         include_once VIP_PLUGIN_DIR . 'view/front/vip-card.php';
         include_once VIP_PLUGIN_DIR . 'view/front/vip-checkout.php';
     }
@@ -67,11 +69,15 @@ class Core
         wp_register_script('vip-admin-js', VIP_PLUGIN_URL . '/assets/js/admin/admin.js', ['jquery'], '1.0.0', true);
         wp_enqueue_script('vip-admin-js');
     }
-    private function wp_vip_activation()
+    public function wp_vip_activation()
     {
     }
-    private function wp_vip_deactivation()
+    public function wp_vip_deactivation()
     {
+    }
+    public function ob_start()
+    {
+        return ob_start(null, 0, 0);
     }
 }
 $core = new Core();

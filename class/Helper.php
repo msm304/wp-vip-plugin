@@ -20,7 +20,7 @@ class Helper
     {
         return rtrim($price, '0');
     }
-    public static function benefits($benefits)
+    public static function benefits($benefits)  
     {
         $benefits = explode('|', $benefits);
         $item = '';
@@ -28,5 +28,9 @@ class Helper
             $item .= '<li>' . $benefit . '</li>';
         }
         return $item;
+    }
+    public static function invoceNumber()
+    {
+        return jdate('Ynj') . rand(10000, 99999);
     }
 }

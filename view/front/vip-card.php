@@ -36,7 +36,7 @@ function wp_vip_layout()
                                 </div>
                                 <div class="packages_bottombody">
                                     <form action="<?php echo site_url('vip-checkout'); ?>" method="post">
-                                        <input type="hidden" value="<?php echo $item->id ?>">
+                                        <input type="hidden" name="plan_id" value="<?php echo $item->id ?>">
                                         <input type="submit" value="انتخاب" name="plan-id" class="btn-pricing">
                                         <?php wp_nonce_field() ?>
                                     </form>
