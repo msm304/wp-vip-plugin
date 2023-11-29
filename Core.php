@@ -10,6 +10,10 @@ Licence: GPLv2 or Later
 Author URI: https://owebra.com/resume
 */
 
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+
 defined('ABSPATH') || exit;
 
 class Core
@@ -37,6 +41,7 @@ class Core
         include_once VIP_PLUGIN_DIR . '_lib/jdf.php';
         include_once VIP_PLUGIN_DIR . 'view/front/vip-card.php';
         include_once VIP_PLUGIN_DIR . 'view/front/vip-checkout.php';
+        include_once VIP_PLUGIN_DIR . 'view/front/vip-gateway.php';
     }
     public function wp_vip_register_assets()
     {

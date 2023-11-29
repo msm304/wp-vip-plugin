@@ -1,9 +1,10 @@
 <?php
 function vip_checkout()
 {
-    if(!isset($_POST['plan_id'])){
+    if(!isset($_POST['plan_id']) || !is_user_logged_in() || empty($_POST['_wpnonce']) || wp_verify_nonce($_POST['_wpnonce'])){
         wp_redirect(home_url());
     }
+    $current_user_info = wp_get_current_user();
     // $result = Payment::gateway();
     // var_dump($result);
     $plan_id = $_POST['plan_id'];
