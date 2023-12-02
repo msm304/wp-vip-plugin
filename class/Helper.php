@@ -29,7 +29,7 @@ class Helper
         }
         return $item;
     }
-    public static function invoceNumber()
+    public static function orderNumber()
     {
         return jdate('Ynj') . rand(10000, 99999);
     }

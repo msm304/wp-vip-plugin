@@ -1,25 +1,17 @@
 <?php
 function vip_checkout()
 {
-    if(!isset($_POST['plan_id']) || !is_user_logged_in() || empty($_POST['_wpnonce']) || wp_verify_nonce($_POST['_wpnonce'])){
-        wp_redirect(home_url());
-    }
-    $current_user_info = wp_get_current_user();
-    // $result = Payment::gateway();
-    // var_dump($result);
-    $plan_id = $_POST['plan_id'];
-    $plan = new Plan();
-    $plan = $plan->find_by_id($plan_id);
+    var_dump(Session::get('user_plan_data'));
 ?>
     <div class="checkout-wrapper">
-        <p class="checkout-title">پرداخت جهت اکانت vip - پلن <?php echo Helper::accountType($plan->type) ?></p>
+        <p class="checkout-title">پرداخت جهت اکانت vip - پلن <?php echo Helper::accountType(Session::get('user_plan_data')['plan_type']) ?></p>
         <div class="order-details">
-            <span>شماره سفارش<span class="order-number"><?php echo Helper::invoceNumber() ?></span></span>
+            <span>شماره سفارش<span class="order-number"><?php echo Session::get('user_plan_data')['order_number'] ?></span></span>
             <span>تاریخ سفارش<span class="order-date"><?php echo jdate('Y/m/d') ?></span></span>
         </div>
         <div class="price-wrapper">
             <span>مبلغ قابل پرداخت </span>
-            <span class="price"><?php echo $plan->price ?> <span>تومان</span></span>
+            <span class="price"><?php echo Session::get('user_plan_data')['price'] ?> <span>تومان</span></span>
         </div>
         <div class="pay">
             <form action="<?php echo htmlspecialchars(get_the_permalink()) ?>" method="post">
@@ -28,5 +20,8 @@ function vip_checkout()
         </div>
     </div>
 <?php
+    if (isset($_POST['pay'])) {
+        var_dump(Session::get('user_plan_data'));
+    }
 }
 add_shortcode('vip-checkout', 'vip_checkout');

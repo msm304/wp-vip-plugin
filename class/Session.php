@@ -2,7 +2,7 @@
 
 class Session
 {
-    public static function has($key)
+    public static function isSetSession($key)
     {
         return array_key_exists($key, $_SESSION);
     }
@@ -14,13 +14,15 @@ class Session
 
     public static function get($key)
     {
-        if (self::has($key)) {
+        if (self::isSetSession($key)) {
             return $_SESSION[$key];
         }
     }
 
     public static function unset($key)
     {
-        self::unset($key);
+        if(self::isSetSession($key)){
+            unset($_SESSION[$key]);
+        }
     }
 }
