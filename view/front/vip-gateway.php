@@ -12,7 +12,7 @@ function vip_gateway()
 
     Session::set('user_plan_data', [
         'sesstion_id' => session_id(),
-        'plan_id' => $plan_id,
+        'user_id' => $current_user_info->ID,
         'plan_type' => $plan->type,
         'first_name' => $current_user_info->first_name,
         'last_name' => $current_user_info->last_name,
@@ -20,7 +20,8 @@ function vip_gateway()
         'price' => $plan->price,
         'order_number' => Helper::orderNumber()
     ]);
-    if(Session::isSetSession('user_plan_data')){
+    // Session::unset('user_plan_data');
+    if (Session::isSetSession('user_plan_data')) {
         wp_redirect(home_url('vip-checkout'));
     } else {
         wp_redirect(home_url());

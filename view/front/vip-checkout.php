@@ -21,7 +21,12 @@ function vip_checkout()
     </div>
 <?php
     if (isset($_POST['pay'])) {
-        var_dump(Session::get('user_plan_data'));
+        // var_dump(Session::get('user_plan_data'));
+        $transaction = new Transaction();
+        $transaction->save(Session::get('user_plan_data'));
+        $description = Helper::accountType(Session::get('user_plan_data')['plan_type']);
+        Payment::setter(Session::get('user_plan_data'), $description);
+        Payment::gateway();
     }
 }
 add_shortcode('vip-checkout', 'vip_checkout');
