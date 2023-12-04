@@ -141,13 +141,21 @@
     font-size: 18px;
 }
 
-.checkout-title {
+.checkout-title, .payment-title {
     text-align: center;
     margin: 20px 0;
     font-weight: bold;
 }
 
-.order-details, .price-wrapper {
+.payment-title{
+    background-color: #27ae60;
+    color: #ecf0f1;
+    padding: 10px 0;
+    margin-bottom: 35px;
+    border-radius: 5px;
+}
+
+.order-details, .price-wrapper, .pric-pay-wrapper {
     display: flex;
     justify-content: space-between;
 }
@@ -159,8 +167,12 @@
     margin-right: 10px;
 }
 
-.price-wrapper{
+.price-wrapper, .pric-pay-wrapper{
     margin-top: 60px;
+}
+
+.pric-pay-wrapper{
+    padding-bottom: 20px;
 }
 
 .price {
@@ -169,12 +181,37 @@
     padding: 7px;
 }
 
-.pay input {
+.pay input, .pay-result a{
     width: 100%;
     color: #fff;
     background-color: #1e90ff;
     border: none;
     margin-top: 40px;
     padding: 8px;
+    border-radius: 8px;
+}
+
+.pay-result{
+    text-align: center;
+    margin: 20px auto;
+}
+
+.pay-result a{
+    color: #1e90ff;
+    background-color: #efefef;
+    border: #1e90ff solid 2px;
+}
+
+.pay-result a:hover{
+    color: #2c3e50 !important;
+    border: #2c3e50 solid 2px;
+}
+
+.track-id{
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 13px;
+    margin-bottom: 30px;
     border-radius: 8px;
 }

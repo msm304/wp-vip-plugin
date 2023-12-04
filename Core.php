@@ -9,7 +9,6 @@ Version: 1.0.0
 Licence: GPLv2 or Later
 Author URI: https://owebra.com/resume
 */
-
 if(session_status() === PHP_SESSION_NONE){
     session_start();
 }
@@ -42,6 +41,8 @@ class Core
         include_once VIP_PLUGIN_DIR . 'view/front/vip-card.php';
         include_once VIP_PLUGIN_DIR . 'view/front/vip-checkout.php';
         include_once VIP_PLUGIN_DIR . 'view/front/vip-gateway.php';
+        include_once VIP_PLUGIN_DIR . 'view/front/vip-payment-result.php';
+        include_once VIP_PLUGIN_DIR . '_inc/zibal-config.php';
     }
     public function wp_vip_register_assets()
     {
