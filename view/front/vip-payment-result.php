@@ -2,6 +2,9 @@
 
 function vip_payment_result()
 {
+    if(!is_user_logged_in() || empty($_GET['status']) || $_GET['status'] != 2) {
+        wp_redirect(home_url());
+    }
     // echo 'result';
     Payment::setter(Session::get('user_plan_data'));
     Payment::payment_result();
@@ -19,12 +22,13 @@ function vip_payment_result()
         </div>
         <div class="pay-result">
             <div class="track-id">
-                <span>شماره تراکنش</span>
-                <span>5342345</span>
+                <span>شناسه مرجع</span>
+                <span><?php echo Payment::get_refNmber() ?></span>
             </div>
             <a href="<?php echo site_url() ?>">بازگشت به سایت</a>
         </div>
     </div>
 <?php
+    Session::unset('user_plan_data');
 }
 add_shortcode('vip-payment-result', 'vip_payment_result');

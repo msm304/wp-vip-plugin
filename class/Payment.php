@@ -7,6 +7,7 @@ class Payment
     protected static $callback_url;
     protected static $description;
     protected static $metadata;
+    protected static $refNamber;
 
     // public static function gateway()
     // {
@@ -101,8 +102,7 @@ class Payment
     {
 
         if ($_GET['success'] == 1) {
-            echo "شناسه سفارش: " . $_GET['orderId'] . "<br>";
-
+            // echo "شناسه سفارش: " . $_GET['orderId'] . "<br>";
             //start verfication
             $parameters = array(
                 "merchant" => self::$merchant_id, //required
@@ -111,14 +111,18 @@ class Payment
             );
 
             $response = postToZibal('verify', $parameters);
-
             if ($response->result == 100) {
-                echo "<pre>"; //for pretty view :)
-                var_dump($response);
+                self::$refNamber = $response->refNumber;
+                // echo "<pre>"; //for pretty view :)
+                // var_dump($response);
                 //update database or something else
+                $transaction = new Transaction;
+                $transaction->update($response->refNumber, Session::get('user_plan_data')['order_number']);
+                User::add_vip_user(Session::get('user_plan_data')['plan_type'], get_current_user_id());
+               
             } else {
-                echo "result: " . $response->result . "<br>";
-                echo "message: " . $response->message;
+                // echo "result: " . $response->result . "<br>";
+                // echo "message: " . $response->message;
             }
         } else {
             echo "پرداخت با شکست مواجه شد.";
@@ -138,5 +142,10 @@ class Payment
         $vip_setting = get_option('_merchandID');
         self::$merchant_id = $vip_setting;
         self::$callback_url = site_url('vip-payment-result');
+    }
+
+    public static function get_refNmber()
+    {
+        return self::$refNamber;
     }
 }

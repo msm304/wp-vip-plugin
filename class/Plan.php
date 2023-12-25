@@ -9,7 +9,7 @@ class Plan
     {
         global $wpdb;
         $this->db = $wpdb;
-        $this->vipTable = $this->db->prefix . 'vip';
+        $this->vipTable = $this->db->prefix . 'vip_plan';
     }
 
     public function find()

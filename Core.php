@@ -9,7 +9,8 @@ Version: 1.0.0
 Licence: GPLv2 or Later
 Author URI: https://owebra.com/resume
 */
-if(session_status() === PHP_SESSION_NONE){
+
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
@@ -34,6 +35,7 @@ class Core
         register_deactivation_hook(__FILE__, [$this, 'wp_vip_deactivation']);
         add_action('wp_enqueue_scripts', [$this, 'wp_vip_register_assets']);
         add_action('admin_enqueue_scripts', [$this, 'wp_vip_register_assets_admin']);
+        add_action('after_setup_theme', [$this, 'wp_check_is_user_vip']);
         add_filter('template_redirect', [$this, 'ob_start']);
 
         // Include
@@ -43,6 +45,10 @@ class Core
         include_once VIP_PLUGIN_DIR . 'view/front/vip-gateway.php';
         include_once VIP_PLUGIN_DIR . 'view/front/vip-payment-result.php';
         include_once VIP_PLUGIN_DIR . '_inc/zibal-config.php';
+        include_once(VIP_PLUGIN_DIR . '_inc/metabox/vip-metabox.php');
+        include_once(VIP_PLUGIN_DIR . '_inc/filter-vip-content.php');
+        include_once(VIP_PLUGIN_DIR . '_inc/panel/menu.php');
+        include_once(ABSPATH . 'wp-includes/pluggable.php');
     }
     public function wp_vip_register_assets()
     {
@@ -57,8 +63,8 @@ class Core
     public function wp_vip_register_assets_admin()
     {
         // UIkit CSS
-        wp_register_style('uikit-style', 'https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css', '', '1.0.0');
-        wp_enqueue_style('uikit-style');
+        wp_register_style('uikit-style-rtl', VIP_PLUGIN_URL . 'assets/css/admin/uikit-rtl.min.css', '', '1.0.0');
+        wp_enqueue_style('uikit-style-rtl');
 
         // CSS
         wp_register_style('vip-style-admin', VIP_PLUGIN_URL . '/assets/css/admin/admin.css', '', '1.0.0');
@@ -81,9 +87,16 @@ class Core
     public function wp_vip_deactivation()
     {
     }
+    function wp_check_is_user_vip()
+    {
+        User::is_user_vip(get_current_user_id());
+    }
     public function ob_start()
     {
         return ob_start(null, 0, 0);
     }
 }
 $core = new Core();
+
+
+

@@ -215,3 +215,13 @@
     margin-bottom: 30px;
     border-radius: 8px;
 }
+
+.vip-alert{
+    margin: 40px 0;
+    font-size: 18px;
+    background: orange;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+}

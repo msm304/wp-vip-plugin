@@ -1,7 +1,7 @@
 <?php
 function vip_checkout()
 {
-    var_dump(Session::get('user_plan_data'));
+    // var_dump(Session::get('user_plan_data'));
 ?>
     <div class="checkout-wrapper">
         <p class="checkout-title">پرداخت جهت اکانت vip - پلن <?php echo Helper::accountType(Session::get('user_plan_data')['plan_type']) ?></p>
@@ -19,6 +19,7 @@ function vip_checkout()
             </form>
         </div>
     </div>
+    
 <?php
     if (isset($_POST['pay'])) {
         // var_dump(Session::get('user_plan_data'));
