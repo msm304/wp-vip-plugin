@@ -1,7 +1,7 @@
 jQuery(document).ready(function (e) {
   jQuery("#position-type").on("change", function () {
     if (jQuery("option.fixed").is(":selected")) {
-        jQuery(".fixed-position-option").slideDown();
+      jQuery(".fixed-position-option").slideDown();
     }
     if (jQuery("option.static").is(":selected")) {
       jQuery(".fixed-position-option").slideUp();
@@ -21,4 +21,12 @@ jQuery(document).ready(function (e) {
   jQuery("#offset-y").on("input", function () {
     jQuery(".offset-y-output").val(this.value + "px");
   });
+});
+
+// Datepicker
+jalaliDatepicker.startWatch({
+  persianDigits: true,
+  separatorChars: {
+    date: "-",
+  },
 });

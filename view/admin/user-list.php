@@ -32,8 +32,8 @@
                         <td><?php echo Helper::calculateRemainingVipCredit($user_vip_data['expired_date']) ?></td>
                         <td><?php echo Helper::vipStatus($user_vip_data['status']) ?></td>
                         <td>
-                            <span uk-icon="trash"></span>
-                            <span uk-icon="pencil"></span>
+                            <a href="<?php echo add_query_arg(['action' => 'delete', 'id' => $user->ID]) ?>"><span uk-icon="trash"></span></a>
+                            <a href="<?php echo add_query_arg(['action' => 'update', 'id' => $user->ID]) ?>"><span uk-icon="pencil"></span></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

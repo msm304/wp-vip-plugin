@@ -51,7 +51,7 @@ class Helper
     public static function toJalali($date, $separator)
     {
         if (empty($date)) {
-            return 'تاریخی ثبت نشده است.';
+            return 'تاریخی ثبت نشده است!';
         }
         switch ($separator) {
             case '-':
@@ -74,7 +74,7 @@ class Helper
     public static function toGregorian($date, $separator)
     {
         if (empty($date)) {
-            return 'تاریخی ثبت نشده است.';
+            return 'تاریخی ثبت نشده است!';
         }
         switch ($separator) {
             case '-':

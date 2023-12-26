@@ -54,6 +54,8 @@ function wp_vip_home_handler()
 
 function wp_vip_user_list_handler()
 {
+    include_once VIP_PLUGIN_DIR . 'view/admin/delete-user.php';
+    include_once VIP_PLUGIN_DIR . 'view/admin/update-user.php';
     include_once VIP_PLUGIN_DIR . 'view/admin/user-list.php';
 }
 

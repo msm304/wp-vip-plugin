@@ -67,8 +67,12 @@ class Core
         wp_enqueue_style('uikit-style-rtl');
 
         // CSS
+        wp_register_style('jalalidatepicker', 'https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.css', '', '1.0.0');
+        wp_enqueue_style('jalalidatepicker');
+
         wp_register_style('vip-style-admin', VIP_PLUGIN_URL . '/assets/css/admin/admin.css', '', '1.0.0');
         wp_enqueue_style('vip-style-admin');
+
 
         // UIkit JS
         wp_register_script('uikit-js', 'https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js', ['jquery'], '1.0.0', true);
@@ -78,6 +82,9 @@ class Core
         wp_enqueue_script('uikit-icon-js');
 
         // JS
+        wp_register_script('jalalidatepicker-js', 'https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.js', '', '1.0.0', true);
+        wp_enqueue_script('jalalidatepicker-js');
+
         wp_register_script('vip-admin-js', VIP_PLUGIN_URL . '/assets/js/admin/admin.js', ['jquery'], '1.0.0', true);
         wp_enqueue_script('vip-admin-js');
     }
@@ -97,6 +104,3 @@ class Core
     }
 }
 $core = new Core();
-
-
-
