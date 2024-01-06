@@ -34,7 +34,7 @@ class Helper
 
     public static function orderNumber()
     {
-        return jdate('Ynj') . rand(10000, 99999);
+        return jdate('Ynj', '', '', '', 'en') . rand(10000, 99999);
     }
 
     public static function vipStatus($status)
@@ -45,6 +45,17 @@ class Helper
                 break;
             case 1:
                 return '<span class="uk-badge">فعال</span>';
+        }
+    }
+
+    public static function vipTransactioStatus($status)
+    {
+        switch ($status) {
+            case 0:
+                return '<span class="uk-badge">ناموفق</span>';
+                break;
+            case 1:
+                return '<span class="uk-badge">موفق</span>';
         }
     }
 

@@ -10,6 +10,8 @@ Licence: GPLv2 or Later
 Author URI: https://owebra.com/resume
 */
 
+use WpOrg\Requests\Exception\Transport;
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -85,8 +87,19 @@ class Core
         wp_register_script('jalalidatepicker-js', 'https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.js', '', '1.0.0', true);
         wp_enqueue_script('jalalidatepicker-js');
 
+        wp_register_script('sweetalert2', 'https://cdn.jsdelivr.net/npm/sweetalert2@11', '', '1.0.0', true);
+        wp_enqueue_script('sweetalert2');
+
         wp_register_script('vip-admin-js', VIP_PLUGIN_URL . '/assets/js/admin/admin.js', ['jquery'], '1.0.0', true);
         wp_enqueue_script('vip-admin-js');
+
+        wp_register_script('admin-ajax', VIP_PLUGIN_URL . '/assets/js/admin/admin-ajax.js', ['jquery'], '1.0.0', true);
+        wp_enqueue_script('admin-ajax');
+
+        wp_localize_script('admin-ajax', 'vip_ajax', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            '_nonce' => wp_create_nonce()
+        ]);
     }
     public function wp_vip_activation()
     {
@@ -103,4 +116,6 @@ class Core
         return ob_start(null, 0, 0);
     }
 }
-$core = new Core();
+new Core();
+new Transaction();
+

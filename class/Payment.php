@@ -9,41 +9,6 @@ class Payment
     protected static $metadata;
     protected static $refNamber;
 
-    // public static function gateway()
-    // {
-    //     $data = array(
-    //         'merchant' => self::$merchant_id,
-    //         'amount' => intval(self::$amount * 10),
-    //         'callbackUrl' => self::$callback_url,
-    //         "description" => 'پرداخت جهت عضویت ویژه پلن : ' . self::$description,
-    //         "metadata" => ["email" => self::$metadata['email'], "phone" => self::$metadata['phone']],
-    //     );
-
-    //     $ch = curl_init('https://gateway.zibal.ir/v1/request');
-    //     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    //         'Content-Type: application/json',
-    //     ));
-
-    //     $result = curl_exec($ch);
-    //     $err = curl_error($ch);
-    //     curl_close($ch);
-
-    //     if ($err) {
-    //         echo "cURL Error #:" . $err;
-    //     } else {
-    //         $result = json_decode($result, true);
-
-    //         if ($result['result'] == 100) {
-    //             header('Location: https://gateway.zibal.ir/start/' . $result['trackId']);
-    //         } else {
-    //             echo 'Error Code: ' . $result['result'];
-    //             echo 'Message: ' . $result['message'];
-    //         }
-    //     }
-    // }
-
     public static function gateway()
     {
         $parameters = array(
@@ -65,38 +30,6 @@ class Payment
             echo "message: " . $response->message;
         }
     }
-
-    // public static function payment_result()
-    // {
-    //     $Authority = $_GET['Authority'];
-    //     $data = array(
-    //         "merchant_id" => self::$merchant_id,
-    //         "authority" => $Authority,
-    //         "amount" => intval(self::$amount * 10)
-    //     );
-    //     $jsonData = json_encode($data);
-    //     $ch = curl_init('https://gateway.zibal.ir/v1/verify.json'); // آدرس جدید برای درگاه زیبال
-    //     curl_setopt($ch, CURLOPT_USERAGENT, 'Zibal Rest Api v1'); // نام کاربری API زیبال
-    //     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-    //     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    //     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    //         'Content-Type: application/json',
-    //         'Content-Length: ' . strlen($jsonData),
-    //         'Authorization: Bearer YOUR_ZIBAL_API_KEY' // کلید API زیبال
-    //     ));
-
-    //     $result = curl_exec($ch);
-    //     curl_close($ch);
-    //     $result = json_decode($result, true);
-    //     if (isset($result['result']) && $result['result'] == 100) {
-    //         echo 'Transaction success. RefID:' . $result['track_id'];
-    //     } else {
-    //         echo 'code: ' . $result['result'];
-    //         echo 'message: ' .  $result['message'];
-    //     }
-    // }
 
     public static function payment_result()
     {

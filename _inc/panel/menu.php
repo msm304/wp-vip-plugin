@@ -1,5 +1,5 @@
 <?php
-add_action('admin_menu', 'vip_register_menu'); 
+add_action('admin_menu', 'vip_register_menu');
 function vip_register_menu()
 {
     add_menu_page(
@@ -54,14 +54,18 @@ function wp_vip_home_handler()
 
 function wp_vip_user_list_handler()
 {
-    include_once VIP_PLUGIN_DIR . 'view/admin/delete-user.php';
-    include_once VIP_PLUGIN_DIR . 'view/admin/update-user.php';
-    include_once VIP_PLUGIN_DIR . 'view/admin/user-list.php';
+    include_once VIP_PLUGIN_DIR . 'view/admin/user/delete-user.php';
+    include_once VIP_PLUGIN_DIR . 'view/admin/user/update-user.php';
+    include_once VIP_PLUGIN_DIR . 'view/admin/user/add-user.php';
+    include_once VIP_PLUGIN_DIR . 'view/admin/user/user-list.php';
 }
 
 function wp_vip_transactions_list_handler()
 {
-    echo 'user transactions';
+    include_once VIP_PLUGIN_DIR . 'view/admin/transaction/delete-transaction.php';
+    include_once VIP_PLUGIN_DIR . 'view/admin/transaction/update-transaction.php';
+    include_once VIP_PLUGIN_DIR . 'view/admin/transaction/add-transaction.php';
+    include_once VIP_PLUGIN_DIR . 'view/admin/transaction/transaction-list.php';
 }
 
 function wp_vip_plan_list_handler()
