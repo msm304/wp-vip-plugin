@@ -75,5 +75,5 @@ function wp_vip_plan_list_handler()
 
 function wp_vip_settings_handler()
 {
-    echo 'vip settings';
+    include_once VIP_PLUGIN_DIR . 'view/admin/setting/setting.php';
 }

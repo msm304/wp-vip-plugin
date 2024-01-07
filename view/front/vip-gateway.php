@@ -22,7 +22,7 @@ function vip_gateway()
     ]);
     // Session::unset('user_plan_data');
     if (Session::isSetSession('user_plan_data')) {
-        wp_redirect(home_url('vip-checkout'));
+        wp_redirect(home_url(get_option('_vip_setting')['checkout']));
     } else {
         wp_redirect(home_url());
     }

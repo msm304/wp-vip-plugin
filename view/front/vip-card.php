@@ -35,7 +35,7 @@ function wp_vip_layout()
                                     </ul>
                                 </div>
                                 <div class="packages_bottombody">
-                                    <form action="<?php echo site_url('gateway'); ?>" method="post">
+                                    <form action="<?php echo site_url(get_option('_vip_setting')['gateway']); ?>" method="post">
                                         <input type="hidden" name="plan_id" value="<?php echo $item->id ?>">
                                         <input type="submit" value="انتخاب" name="plan-id" class="btn-pricing">
                                         <?php wp_nonce_field() ?>

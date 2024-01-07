@@ -52,7 +52,6 @@ class Payment
                 $transaction = new Transaction;
                 $transaction->update($response->refNumber, Session::get('user_plan_data')['order_number']);
                 User::add_vip_user(Session::get('user_plan_data')['plan_type'], get_current_user_id());
-               
             } else {
                 // echo "result: " . $response->result . "<br>";
                 // echo "message: " . $response->message;
@@ -72,9 +71,9 @@ class Payment
             'email' => $data['email'],
             'mobile' => '09022207077'
         ];
-        $vip_setting = get_option('_merchandID');
-        self::$merchant_id = $vip_setting;
-        self::$callback_url = site_url('vip-payment-result');
+        $vip_setting = get_option('_vip_setting');
+        self::$merchant_id = $vip_setting['merchant_id'];
+        self::$callback_url = site_url(get_option('_vip_setting')['callback_url']);
     }
 
     public static function get_refNmber()

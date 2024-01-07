@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $vip_user_data = get_user_meta($user_id, '_vip', true);
         $current_user_data = get_userdata($user_id);
 ?>
-        <div class="uk-container-expand">
+        <div class="uk-container uk-container-expand">
             <h1 class="uk-margin-top">ویرایش کاربر</h1>
             <form method="post" action="" class="uk-grid-small" uk-grid>
 
