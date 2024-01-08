@@ -41,6 +41,7 @@ class Core
         add_filter('template_redirect', [$this, 'ob_start']);
 
         // Include
+        include_once(ABSPATH . 'wp-includes/pluggable.php');
         include_once VIP_PLUGIN_DIR . '_lib/jdf.php';
         include_once VIP_PLUGIN_DIR . 'view/front/vip-card.php';
         include_once VIP_PLUGIN_DIR . 'view/front/vip-checkout.php';
@@ -50,7 +51,8 @@ class Core
         include_once(VIP_PLUGIN_DIR . '_inc/metabox/vip-metabox.php');
         include_once(VIP_PLUGIN_DIR . '_inc/filter-vip-content.php');
         include_once(VIP_PLUGIN_DIR . '_inc/panel/menu.php');
-        include_once(ABSPATH . 'wp-includes/pluggable.php');
+        include_once(VIP_PLUGIN_DIR . '_inc/widget/vip-widget.php');
+        include_once(VIP_PLUGIN_DIR . '_inc/filter-vip-avatar.php');
     }
     public function wp_vip_register_assets()
     {
@@ -118,4 +120,3 @@ class Core
 }
 new Core();
 new Transaction();
-

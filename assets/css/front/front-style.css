@@ -225,3 +225,11 @@
     color: #fff;
     border-radius: 5px;
 }
+
+.user-vip-badge {
+    background: #1ac790;
+    padding: 1px 10px;
+    border-radius: 3px;
+    margin: 10px 10px;
+    color: #fff;
+}
